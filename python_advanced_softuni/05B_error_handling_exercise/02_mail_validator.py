@@ -1,30 +1,35 @@
 class NameTooShortError(Exception):
     pass
 
-class MustContainAtSymbolError(NameTooShortError):
+
+class MustContainAtSymbolError(Exception):
     pass
 
-class InvalidDomainError(NameTooShortError):
+
+class InvalidDomainError(Exception):
     pass
 
-EMAIL_MIN_NAME_LENGHT = 5
-VALID_DOMAINS = ["com", "net", "bg", "org"]
+
+MIN_NAME_LENGTH = 5
+ALLOWED_DOMAINS = ["com", "bg", "org", "net"]
 
 while True:
-    email = input()
+    email_address = input()
 
-    if email == "End":
+    if email_address == "End":
         break
 
-    if "@" not in email:
+    if "@" not in email_address:
         raise MustContainAtSymbolError("Email must contain @")
 
-    if len(email.split("@")[0]) < EMAIL_MIN_NAME_LENGHT:
+    username = email_address.split("@")[0]
+
+    if len(username) < MIN_NAME_LENGTH:
         raise NameTooShortError("Name must be more than 4 characters")
 
-    domain = email.split(".")[-1]
+    domain = email_address.split(".")[-1]
 
-    if domain not in VALID_DOMAINS:
-        raise InvalidDomainError("Domain must be onf of the following: .com, .bg, .org, .net")
+    if domain not in ALLOWED_DOMAINS:
+        raise InvalidDomainError("Domain must be one of the following: .com, .bg, .org, .net")
 
     print("Email is valid")

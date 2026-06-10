@@ -1,37 +1,43 @@
-numbers_dictionary = {}
+numbers = {}
 
-line = input()
+current_input = input()
 
-while line != "Search":
-    number_as_string = line
+while current_input != "Search":
+    key = current_input
+
     try:
-        number = int(input())
+        value = int(input())
+        numbers[key] = value
     except ValueError:
         print("The variable number must be an integer")
-    else:
-        numbers_dictionary[number_as_string] = number
-    line = input()
 
-line = input()
+    current_input = input()
 
-while line != "Remove":
-    searched = line
+
+current_input = input()
+
+while current_input != "Remove":
+    key_to_find = current_input
+
     try:
-        print(numbers_dictionary[searched])
-        except KeyError:
-        print("Number does not exist in dictionary")
-    line = input()
-
-line = input()
-
-while line != "End":
-    searched = line
-    try:
-        del numbers_dictionary[searched]
-
+        print(numbers[key_to_find])
     except KeyError:
         print("Number does not exist in dictionary")
 
-    line = input()
+    current_input = input()
 
-print(numbers_dictionary)
+
+current_input = input()
+
+while current_input != "End":
+    key_to_delete = current_input
+
+    try:
+        del numbers[key_to_delete]
+    except KeyError:
+        print("Number does not exist in dictionary")
+
+    current_input = input()
+
+
+print(numbers)

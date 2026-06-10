@@ -1,48 +1,61 @@
 class MoneyNotEnoughError(Exception):
     pass
 
+
 class PINCodeError(Exception):
     pass
+
 
 class UnderageTransactionError(Exception):
     pass
 
+
 class MoneyIsNegativeError(Exception):
     pass
 
-VALID_AGE = 18
-pin, balance, age = map(int, input().split(", "))
+
+MINIMUM_AGE = 18
+
+account_info = input().split(", ")
+
+correct_pin = int(account_info[0])
+balance = float(account_info[1])
+age = int(account_info[2])
 
 while True:
-    line = input().split("#")
+    command = input()
 
-    if line[0] == "End":
+    if command == "End":
         break
 
-    if line[0] == "Send Money":
-        money, pin_code = int(line[1]), int(line[2])
+    command_parts = command.split("#")
+    action = command_parts[0]
 
-        if money > balance:
+    if action == "Send Money":
+        money_to_send = float(command_parts[1])
+        entered_pin = int(command_parts[2])
+
+        if money_to_send > balance:
             raise MoneyNotEnoughError("Insufficient funds for the requested transaction")
 
-        if pin_code != pin:
+        if entered_pin != correct_pin:
             raise PINCodeError("Invalid PIN code")
 
-        if age < VALID_AGE:
+        if age < MINIMUM_AGE:
             raise UnderageTransactionError("You must be 18 years or older to perform online transactions")
 
-        balance -= money
+        balance -= money_to_send
 
-        print(f"Successfully sent {money:.2f} money to a friend")
+        print(f"Successfully sent {money_to_send:.2f} money to a friend")
         print(f"There is {balance:.2f} money left in the bank account")
 
-    elif line[0] == "Receive Money":
-        money = int(line[1])
+    elif action == "Receive Money":
+        received_money = float(command_parts[1])
 
-        if money < 0:
+        if received_money < 0:
             raise MoneyIsNegativeError("The amount of money cannot be a negative number")
 
-        amount_of_money = money * 0.5
-        balance += amount_of_money
+        money_for_account = received_money / 2
+        balance += money_for_account
 
-        print(f"{amount_of_money:.2f} money went straight into the bank account")
+        print(f"{money_for_account:.2f} money went straight into the bank account")
