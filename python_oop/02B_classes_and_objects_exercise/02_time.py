@@ -14,20 +14,20 @@ class Time:
         self.seconds = seconds
 
     def get_time(self) -> str:
+        if self.seconds > Time.max_seconds:
+            self.minutes += self.seconds // 60
+            self.seconds %= 60
+        if self.minutes > Time.max_minutes:
+            self.hours += self.minutes // 60
+            self.minutes %= 60
+        if self.hours > Time.max_hours:
+            self.hours %= 24
+
         return f"{self.hours:02d}:{self.minutes:02d}:{self.seconds:02d}"
 
     def next_second(self) -> str:
         self.seconds += 1
-        if self.seconds > Time.max_seconds:
-            self.seconds = 0
-            self.minutes += 1
-            if self.minutes > Time.max_minutes:
-                self.minutes = 0
-                self.hours += 1
-                if self.hours > Time.max_hours:
-                    self.hours = 0
-
-        return Time.get_time(self)
+        return self.get_time()
 
 time = Time(23, 59, 59)
 print(time.next_second())
