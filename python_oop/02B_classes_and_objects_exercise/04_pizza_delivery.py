@@ -3,7 +3,7 @@ class PizzaDelivery:
         self.name = name
         self.price = price
         self.ingredients = ingredients
-        self.ordered = False
+        self.ordered: bool = False
 
     def add_extra(self, ingredient: str, quantity: int, price_per_quantity: float) -> str | None:
         if self.ordered:
