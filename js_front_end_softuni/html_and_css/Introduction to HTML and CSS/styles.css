@@ -1,0 +1,19 @@
+li{
+    color: red;
+}
+
+#unique{
+    color: green;
+}
+
+.blue-text{
+    color: blue;
+}
+
+[href="https://softuni.bg"]{
+    font-size: 25px;
+}
+
+a{
+    text-decoration: none;
+}
