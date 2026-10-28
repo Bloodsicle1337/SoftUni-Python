@@ -1,0 +1,21 @@
+@media (max-width: 600px) {
+    .pair {
+        flex-direction: column;
+    }
+
+    .beast {
+        width: 100%;
+    }
+
+    .news ul {
+        flex-direction: column;
+    }
+
+    .news li {
+        flex-direction: column;
+    }
+
+    .news li img {
+        width: 60%;
+    }
+}
