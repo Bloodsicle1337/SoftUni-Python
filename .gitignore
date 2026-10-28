@@ -18,7 +18,8 @@ __pycache__.zip
 .DS_Store
 Thumbs.db
 
-# SoftUni task descriptions - never commit (zips bundle them too)
-*.docx
-*.doc
-js_front_end_softuni/**/*.zip
+# big_day exam task descriptions - never commit
+js_front_end_softuni/html_and_css/big_day/01.The Three Wise Monkeys_Resources/01.The Three Wise Monkeys_Description.docx
+js_front_end_softuni/html_and_css/big_day/02.Legendary Creatures-Resources/02.Legendary Creatures_Description.docx
+js_front_end_softuni/html_and_css/big_day/03.Atelier_Bloom-Resources/03.Atelier Bloom_Description.docx
+js_front_end_softuni/html_and_css/big_day/html_exam.zip
